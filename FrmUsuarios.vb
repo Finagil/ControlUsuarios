@@ -66,16 +66,16 @@ Public Class FrmUsuarios
 
     Private Sub BtnPWD_Click(sender As Object, e As EventArgs) Handles BtnPWD.Click
         Dim NewPWD As String = Genera_Pass(8, "", False, True, True, False, False, False)
-        Dim SQL As New SqlClient.SqlCommand
+        'Dim SQL As New SqlClient.SqlCommand
         NewPWD = InputBox("Dame la nueva Contraseña", "Cambio de Contraseña", NewPWD)
         If NewPWD <> "" Then
             NewPWD = getMd5Hash(NewPWD)
             Me.USUARIOSTableAdapter.ChangePWD(NewPWD, CmbUser.SelectedValue, CmbUser.SelectedValue)
-            SQL.CommandText = "ALTER LOGIN [" & TxtUser.Text & "] WITH PASSWORD = '" & NewPWD & "';"
-            SQL.Connection = Me.USUARIOSTableAdapter.Connection
-            SQL.Connection.Open()
-            SQL.ExecuteNonQuery()
-            SQL.Connection.Close()
+            'SQL.CommandText = "ALTER LOGIN [" & TxtUser.Text & "] WITH PASSWORD = '" & NewPWD & "';"
+            'Sql.Connection = Me.USUARIOSTableAdapter.Connection
+            'Sql.Connection.Open()
+            'Sql.ExecuteNonQuery()
+            'Sql.Connection.Close()
             MessageBox.Show("Cambio de contraseña exitoso", "Cambio de Contraseña", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
