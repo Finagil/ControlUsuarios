@@ -31,6 +31,10 @@ Partial Class FrmUsuarios
         Me.SUCURSALBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SUCURSALTableAdapter = New ControlUsuarios.SeguridadDSTableAdapters.SUCURSALTableAdapter()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ComboJefe = New System.Windows.Forms.ComboBox()
+        Me.USUARIOSBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SeguridadDS1 = New ControlUsuarios.SeguridadDS()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.TxtUser = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.CmbSucursal = New System.Windows.Forms.ComboBox()
@@ -56,10 +60,17 @@ Partial Class FrmUsuarios
         Me.Button1 = New System.Windows.Forms.Button()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.ComboDepto = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Deptop_BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DEPTOTableAdapter = New ControlUsuarios.SeguridadDSTableAdapters.DEPTOTableAdapter()
         CType(Me.USUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeguridadDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SUCURSALBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.USUARIOSBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SeguridadDS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Deptop_BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -108,6 +119,10 @@ Partial Class FrmUsuarios
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.ComboDepto)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.ComboJefe)
+        Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.TxtUser)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.CmbSucursal)
@@ -129,10 +144,41 @@ Partial Class FrmUsuarios
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 57)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(571, 158)
+        Me.GroupBox1.Size = New System.Drawing.Size(571, 196)
         Me.GroupBox1.TabIndex = 20
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Usuario"
+        '
+        'ComboJefe
+        '
+        Me.ComboJefe.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.USUARIOSBindingSource, "jefe", True))
+        Me.ComboJefe.DataSource = Me.USUARIOSBindingSource1
+        Me.ComboJefe.DisplayMember = "Nom"
+        Me.ComboJefe.FormattingEnabled = True
+        Me.ComboJefe.Location = New System.Drawing.Point(17, 167)
+        Me.ComboJefe.Name = "ComboJefe"
+        Me.ComboJefe.Size = New System.Drawing.Size(273, 21)
+        Me.ComboJefe.TabIndex = 28
+        Me.ComboJefe.ValueMember = "cve_empleado"
+        '
+        'USUARIOSBindingSource1
+        '
+        Me.USUARIOSBindingSource1.DataMember = "USUARIOS"
+        Me.USUARIOSBindingSource1.DataSource = Me.SeguridadDS1
+        '
+        'SeguridadDS1
+        '
+        Me.SeguridadDS1.DataSetName = "SeguridadDS"
+        Me.SeguridadDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(14, 150)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(27, 13)
+        Me.Label11.TabIndex = 27
+        Me.Label11.Text = "Jefe"
         '
         'TxtUser
         '
@@ -315,7 +361,7 @@ Partial Class FrmUsuarios
         '
         'BtnSave
         '
-        Me.BtnSave.Location = New System.Drawing.Point(508, 221)
+        Me.BtnSave.Location = New System.Drawing.Point(508, 259)
         Me.BtnSave.Name = "BtnSave"
         Me.BtnSave.Size = New System.Drawing.Size(75, 23)
         Me.BtnSave.TabIndex = 21
@@ -324,7 +370,7 @@ Partial Class FrmUsuarios
         '
         'BtnNew
         '
-        Me.BtnNew.Location = New System.Drawing.Point(12, 221)
+        Me.BtnNew.Location = New System.Drawing.Point(12, 259)
         Me.BtnNew.Name = "BtnNew"
         Me.BtnNew.Size = New System.Drawing.Size(75, 23)
         Me.BtnNew.TabIndex = 22
@@ -333,7 +379,7 @@ Partial Class FrmUsuarios
         '
         'BtnPWD
         '
-        Me.BtnPWD.Location = New System.Drawing.Point(415, 221)
+        Me.BtnPWD.Location = New System.Drawing.Point(415, 259)
         Me.BtnPWD.Name = "BtnPWD"
         Me.BtnPWD.Size = New System.Drawing.Size(85, 23)
         Me.BtnPWD.TabIndex = 23
@@ -342,7 +388,7 @@ Partial Class FrmUsuarios
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(305, 221)
+        Me.Button1.Location = New System.Drawing.Point(305, 259)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 23)
         Me.Button1.TabIndex = 24
@@ -371,11 +417,42 @@ Partial Class FrmUsuarios
         Me.RadioButton2.Text = "Inactivos"
         Me.RadioButton2.UseVisualStyleBackColor = True
         '
+        'ComboDepto
+        '
+        Me.ComboDepto.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.USUARIOSBindingSource, "id_depto", True))
+        Me.ComboDepto.DataSource = Me.Deptop_BindingSource
+        Me.ComboDepto.DisplayMember = "nom_depto"
+        Me.ComboDepto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboDepto.FormattingEnabled = True
+        Me.ComboDepto.Location = New System.Drawing.Point(296, 167)
+        Me.ComboDepto.Name = "ComboDepto"
+        Me.ComboDepto.Size = New System.Drawing.Size(252, 21)
+        Me.ComboDepto.TabIndex = 40
+        Me.ComboDepto.ValueMember = "id_depto"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(293, 150)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(74, 13)
+        Me.Label12.TabIndex = 39
+        Me.Label12.Text = "Departamento"
+        '
+        'Deptop_BindingSource
+        '
+        Me.Deptop_BindingSource.DataMember = "DEPTO"
+        Me.Deptop_BindingSource.DataSource = Me.SeguridadDS1
+        '
+        'DEPTOTableAdapter
+        '
+        Me.DEPTOTableAdapter.ClearBeforeFill = True
+        '
         'FrmUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(817, 442)
+        Me.ClientSize = New System.Drawing.Size(594, 288)
         Me.Controls.Add(Me.RadioButton2)
         Me.Controls.Add(Me.RadioButton1)
         Me.Controls.Add(Me.Button1)
@@ -392,6 +469,9 @@ Partial Class FrmUsuarios
         CType(Me.SUCURSALBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.USUARIOSBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SeguridadDS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Deptop_BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -430,4 +510,12 @@ Partial Class FrmUsuarios
     Friend WithEvents Button1 As Button
     Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents ComboJefe As ComboBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents SeguridadDS1 As SeguridadDS
+    Friend WithEvents USUARIOSBindingSource1 As BindingSource
+    Friend WithEvents ComboDepto As ComboBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Deptop_BindingSource As BindingSource
+    Friend WithEvents DEPTOTableAdapter As SeguridadDSTableAdapters.DEPTOTableAdapter
 End Class

@@ -3,8 +3,11 @@ Imports System.Text
 Public Class FrmUsuarios
     Dim Nuevo As Boolean = False
     Private Sub FrmUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'SeguridadDS1.DEPTO' Puede moverla o quitarla según sea necesario.
+        Me.DEPTOTableAdapter.Fill(Me.SeguridadDS1.DEPTO)
         Me.SUCURSALTableAdapter.Fill(Me.SeguridadDS.SUCURSAL)
         Me.USUARIOSTableAdapter.Fill(Me.SeguridadDS.USUARIOS)
+        Me.USUARIOSTableAdapter.Fill(Me.SeguridadDS1.USUARIOS)
         RadioButton1_CheckedChanged(Nothing, Nothing)
     End Sub
 
